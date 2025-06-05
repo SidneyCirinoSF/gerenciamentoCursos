@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutCadastroCurso"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/txtTituloCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastro de Curso"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtCodigoCurso" />
+
+    <EditText
+        android:id="@+id/edtCodigoCurso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Código do Curso"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloCurso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/edtNomeCurso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Curso"
+        android:inputType="textCapWords"
+        app:layout_constraintTop_toBottomOf="@id/edtCodigoCurso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/edtTempoFormacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Tempo de Formação (em semestres)"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/edtNomeCurso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnSalvarCurso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        app:layout_constraintTop_toBottomOf="@id/edtTempoFormacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

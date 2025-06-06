@@ -1,5 +1,8 @@
 package com.example.gerenciamentocursos;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,10 +11,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
 public class CadastroCurso extends AppCompatActivity {
 
     private EditText edtNomeCurso, edtCodigoCurso, edtTempoFormacao;
     private Button btnSalvarCurso;
+    private SQLiteDatabase db;;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,15 @@ public class CadastroCurso extends AppCompatActivity {
         edtTempoFormacao = findViewById(R.id.edtTempoFormacao);
         btnSalvarCurso = findViewById(R.id.btnSalvarCurso);
 
+        Button BtvoltarC = findViewById(R.id.btvoltarCurso);
+
+        BtvoltarC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pag_inicial(v);
+            }
+        });
+
         btnSalvarCurso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +50,12 @@ public class CadastroCurso extends AppCompatActivity {
 
                 if (nome.isEmpty() || codigo.isEmpty() || tempoFormacaoStr.isEmpty()) {
                     Toast.makeText(CadastroCurso.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                boolean resultado = verificarCodigoC(codigo);
+                if (resultado) {
+                    Toast.makeText(CadastroCurso.this, "Este código de curso já existe!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -58,4 +81,15 @@ public class CadastroCurso extends AppCompatActivity {
             }
         });
     }
+    public void pag_inicial(View v){
+        Intent in = new Intent(this , MainActivity.class);
+        startActivity(in);
+    }
+
+    public boolean verificarCodigoC(String codigo) {
+        CursoDAO dao = new CursoDAO(this);
+        boolean existe = dao.verificarCodigoCurso(codigo);
+        return existe;
+    }
+
 }

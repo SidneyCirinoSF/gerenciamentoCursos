@@ -1,5 +1,6 @@
 package com.example.gerenciamentocursos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,7 +16,6 @@ public class AdicionarDisciplinaCurso extends AppCompatActivity {
 
     private Spinner spinnerCursos, spinnerDisciplinas;
     private Button btnRelacionar;
-
     private CursoDAO cursoDAO;
     private DisciplinaDAO disciplinaDAO;
     private CursoDisciplinaDAO cursoDisciplinaDAO;
@@ -34,6 +34,14 @@ public class AdicionarDisciplinaCurso extends AppCompatActivity {
         cursoDisciplinaDAO = new CursoDisciplinaDAO(this);
 
         carregarSpinners();
+        Button BtvoltarDC = findViewById(R.id.btVoltarDisciplinaCurso);
+
+        BtvoltarDC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pag_inicial(v);
+            }
+        });
 
         btnRelacionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +77,10 @@ public class AdicionarDisciplinaCurso extends AppCompatActivity {
             }
         });
     }
-
+    public void pag_inicial(View v){
+        Intent in = new Intent(this , MainActivity.class);
+        startActivity(in);
+    }
     private void carregarSpinners() {
         ArrayList<String> cursos = cursoDAO.listarNomesCursos();
         ArrayList<String> disciplinas = disciplinaDAO.listarNomesDisciplinas();
@@ -86,3 +97,4 @@ public class AdicionarDisciplinaCurso extends AppCompatActivity {
         spinnerDisciplinas.setAdapter(adapterDisciplinas);
     }
 }
+

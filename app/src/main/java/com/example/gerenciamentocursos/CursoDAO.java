@@ -5,11 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+
 import java.util.ArrayList;
 public class CursoDAO {
 
     private SQLiteDatabase db;
-
     public CursoDAO(Context context) {
         BancoHelper helper = new BancoHelper(context);
         db = helper.getWritableDatabase();
@@ -31,6 +31,13 @@ public class CursoDAO {
         }
         cursor.close();
         return lista;
+    }
+
+    public boolean verificarCodigoCurso(String codigo) {
+        Cursor cursor = db.rawQuery("SELECT * FROM Curso WHERE codigo = ?", new String[]{codigo});
+        boolean existe = cursor.moveToFirst();
+        cursor.close();
+        return existe;
     }
 
     public int obterIdPorNome(String nome) {

@@ -31,6 +31,13 @@ public class DisciplinaDAO {
         return lista;
     }
 
+    public boolean verificarCodigoDiciplina(String codigo) {
+        Cursor cursor = db.rawQuery("SELECT * FROM Disciplina WHERE codigo = ?", new String[]{codigo});
+        boolean existe = cursor.moveToFirst();
+        cursor.close();
+        return existe;
+    }
+
     public int obterIdPorNome(String nome) {
         Cursor cursor = db.rawQuery("SELECT id FROM Disciplina WHERE nome = ?", new String[]{nome});
         if (cursor.moveToFirst()) {

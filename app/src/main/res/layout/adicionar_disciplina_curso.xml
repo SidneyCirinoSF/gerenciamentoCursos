@@ -66,4 +66,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
+    <Button
+        android:id="@+id/btVoltarDisciplinaCurso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="Voltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerDisciplinas" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
